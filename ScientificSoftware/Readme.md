@@ -20,12 +20,8 @@ pip install .
 
 Use python3 to run the code as follows:
 
-```shell
-python
-```
-
 ```python
->>> from ScientificSoftware import ScientificSoftwareProblem  
->>> sol = ScientificSoftwareProblem() #create the solution object and initialize
->>> sol.solve_ivp() #solve the two equations and output the results
+from ScientificSoftware import ScientificSoftwareProblem  
+sol = ScientificSoftwareProblem() #create the solution object and initialize
+sol.solve_ivp() #solve the two equations and output the results
 ```
