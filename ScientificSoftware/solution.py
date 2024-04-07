@@ -118,7 +118,7 @@ class ScientificSoftwareProblem:
 
     def __plot_results(self):
         fig, ax1 = plt.subplots()
-        ax1.plot(self.current_densities_to_plot_A_per_m2, self.PulseDuration, 'b-',marker='x',label='Pulse Duration (s)', linestyle='-.')
+        ax1.plot(self.current_densities_to_plot_A_per_m2, self.PulseDuration,marker='x',label='Pulse Duration (s)', linestyle='-.')
         ax1.set_xlabel('Current Density ($A/m^2$)')
         ax1.set_ylabel('Pulse Duration (s)', color='b')
         ax1.tick_params('y',colors='b')
