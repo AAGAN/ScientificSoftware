@@ -210,7 +210,7 @@ class ScientificSoftwareProblem:
         ax1.grid(which="both", color="gray", linestyle="--")
         ax2.grid(which="both", color="gray", linestyle="--")
 
-        plt.show()
+        plt.show(block=False)
 
     def __print_results(self):
         # Define table header with formatting

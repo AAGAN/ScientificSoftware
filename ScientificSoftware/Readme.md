@@ -1,5 +1,27 @@
 # Solution to the Scientific Software Problem from CFS
 
+To make sure the enviroment for running the ScientificSoftware package is clean, it is advisable to create a new virtual environment
+
+```powershell
+python -m venv ./.venv
+```
+
+If working from Windows Powershell, you may need to change the ExecutionPolicy to allow scripts. This needs Administrator previlages. Start a Powershell prompt as an Anministrator and run the following command:
+
+```powershell
+Get-ExecutionPolicy
+Set-ExecutionPolicy Unrestricted
+```
+Now you can activate the virtual environment from Windows Powershell:
+
+```powershell
+./.venv/Scripts/Activate.ps1
+```
+or if working in linux:
+```linuxshell
+source ./venv/bin/activate
+```
+
 To clone the repository:
 
 ```shell
