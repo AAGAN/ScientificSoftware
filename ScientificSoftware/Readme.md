@@ -43,9 +43,10 @@ pip install .
 To run the program, you can either import the module in Python as follows:
 
 ```python
-from ScientificSoftware import ScientificSoftwareProblem  
-sol = ScientificSoftwareProblem() #create the solution object and initialize
-sol.solve_ivp() #solve the two equations and output the results
+from ScientificSoftware import ScientificSoftwareProblem
+sol = ScientificSoftwareProblem()  # create the solution object and initialize
+sol.solve_ivp()  # solve the two equations and output the results
+
 ```
 
 Or, run the provided `run.py` file:
