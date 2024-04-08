@@ -60,3 +60,5 @@ To run the tests using pytest, run the following command in the root of the proj
 ```shell
 pytest -v
 ```
+
+I created a video demonstration of this implementation and uploaded [here](https://youtu.be/R-khYo-CcW8)
