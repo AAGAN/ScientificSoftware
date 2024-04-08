@@ -230,3 +230,8 @@ class ScientificSoftwareProblem:
                 self.PulseDuration[i],
             )
             print(row)
+
+
+if __name__ == '__main__':
+    ssp = ScientificSoftwareProblem()
+    ssp.solve_ivp()

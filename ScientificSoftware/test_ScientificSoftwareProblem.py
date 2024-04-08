@@ -16,11 +16,27 @@ def test_specific_heat_capacity_data(SSP_Instance):
 def test_cu_resistivity_data(SSP_Instance):
     assert SSP_Instance.CuElectricalResistivity[0] == 0.015
 
-def test_specific_heat_capacity_interpolation(SSP_Instance):
-    assert SSP_Instance._ScientificSoftwareProblem__SpecificHeatCapacityFunc(100) == 252  # testing the correctness of interpolation for specific heat capacity of copper
+@pytest.mark.parametrize(
+        ('Temperature', 'SpecificHeat'),
+        (
+            (77,192),
+            (100,252),
+            (150,323)
+        )
+)
+def test_specific_heat_capacity_interpolation(SSP_Instance, Temperature, SpecificHeat):
+    assert SSP_Instance._ScientificSoftwareProblem__SpecificHeatCapacityFunc(Temperature) == pytest.approx(SpecificHeat)  # testing the correctness of interpolation for specific heat capacity of copper
 
-def test_cu_resistivity_interpolation(SSP_Instance):
-    assert 0.339e-8 < SSP_Instance._ScientificSoftwareProblem__CuResistivityElectricalResistivityFunc(100) < 0.341e-8  # testing the correctness of interpolation for copper's resistivity 
+@pytest.mark.parametrize(
+    ('Temperature', 'Resistivity'),
+    (
+        (77,0.21e-8),
+        (100,0.34e-8),
+        (150,0.7e-8)
+    )
+)
+def test_cu_resistivity_interpolation(SSP_Instance, Temperature, Resistivity):
+    assert SSP_Instance._ScientificSoftwareProblem__CuResistivityElectricalResistivityFunc(Temperature) == pytest.approx(Resistivity)
 
 def test_dT_dt(SSP_Instance):
     T = 100
