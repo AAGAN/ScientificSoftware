@@ -21,21 +21,21 @@ class ScientificSoftwareProblem:
         self.rho_m = 8960  # density of copper at 100K in Kg/m^3
         self.mu_0 = 1.25663706143e-6  # vacuum permeability
         # read the input files
-        if copper_heat_capacity_vs_temperature_csv_filepath == None:
+        if copper_heat_capacity_vs_temperature_csv_filepath is None:
             copper_heat_capacity_vs_temperature_csv_filepath = (
                 "./data/copper_heat_capacity_vs_temperature.csv"
             )
         self.SpecificHeatCapacityData = np.genfromtxt(
             copper_heat_capacity_vs_temperature_csv_filepath, delimiter=","
         )
-        if copper_RRR100_resistivity_vs_temperature_csv_filepath == None:
+        if copper_RRR100_resistivity_vs_temperature_csv_filepath is None:
             copper_RRR100_resistivity_vs_temperature_csv_filepath = (
                 "./data/copper_RRR100_resistivity_vs_temperature.csv"
             )
         self.CopperResistivityData = np.genfromtxt(
             copper_RRR100_resistivity_vs_temperature_csv_filepath, delimiter=","
         )
-        if tf_coils_alcator_cmod_json_filepath == None:
+        if tf_coils_alcator_cmod_json_filepath is None:
             tf_coils_alcator_cmod_json_filepath = "./data/tf_coils_alcator_cmod.json"
         with open(tf_coils_alcator_cmod_json_filepath) as file:
             self.TFCoilsAlcatorCmodData = json.load(file)
@@ -113,7 +113,7 @@ class ScientificSoftwareProblem:
         )
         return B0
 
-    def solve_RK4(self, output = True):
+    def solve_RK4(self, output=True):
         """This function uses 4th order Rung-Kutta method to solve the ODE and output the results"""
         t_final = (
             50  # seconds max time to solve for, large enough to reach pulse duration
@@ -136,10 +136,10 @@ class ScientificSoftwareProblem:
                     break
             self.MagneticField[count] = self.__MagneticFieldMagnitude()
             count += 1
-        if (output):
+        if output:
             self.__output_results()
 
-    def solve_ivp(self, output = True):
+    def solve_ivp(self, output=True):
         """This function uses scipy.integrate.solve_ivp to solve the ODE and output the results"""
 
         def stop_integration(t, T):
@@ -232,6 +232,6 @@ class ScientificSoftwareProblem:
             print(row)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     ssp = ScientificSoftwareProblem()
     ssp.solve_ivp()
