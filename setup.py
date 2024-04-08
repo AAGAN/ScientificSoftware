@@ -8,10 +8,11 @@ setup(
     author='Arash Agan',
     author_email='arash.agan@gmail.com',
     packages=find_packages(),
-    install_requireds=[
+    install_requires=[
         'numpy',
         'matplotlib',
         'scipy',
-        'pytest'
+        'pytest', #for testing on github actions
+        'flake8' #for linting on github actions
     ],
 )

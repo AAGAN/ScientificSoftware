@@ -25,3 +25,9 @@ from ScientificSoftware import ScientificSoftwareProblem
 sol = ScientificSoftwareProblem() #create the solution object and initialize
 sol.solve_ivp() #solve the two equations and output the results
 ```
+
+To run the tests using pytest, run the following command in the root of the project:
+
+```shell
+pytest -v
+```
