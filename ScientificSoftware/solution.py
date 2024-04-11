@@ -12,7 +12,7 @@ class ScientificSoftwareProblem:
         self,
         copper_heat_capacity_vs_temperature_csv_filepath=None,
         copper_RRR100_resistivity_vs_temperature_csv_filepath=None,
-        tf_coils_alcator_cmod_json_filepath=None,
+        tf_coils_alcator_cmod_json_filepath=None
     ):
         """To initialize the class, you can provide the location of each input file.
         if the filepaths are not provided, the location is considered to be in a folder
@@ -64,6 +64,11 @@ class ScientificSoftwareProblem:
         self.jiterator = 0
         self.PulseDuration = np.zeros(len(self.current_densities_to_plot_A_per_m2))
         self.MagneticField = np.zeros(len(self.current_densities_to_plot_A_per_m2))
+        self.SourceTerms = set()
+
+    def addSourceTerms(self, *args):
+        for source_term in args:
+            self.SourceTerms.add(source_term)
 
     def __SpecificHeatCapacityFunc(self, T, n=1):
         """This private method interpolates between the values of specific heat capacity vs Temperature"""
@@ -97,7 +102,11 @@ class ScientificSoftwareProblem:
         rho_e_val = self.__CuResistivityElectricalResistivityFunc(T)
         c_val = self.__SpecificHeatCapacityFunc(T)
         j_squared = self.jiterator**2  # Adjust this as needed
-        return rho_e_val / c_val / self.rho_m * j_squared
+        source_terms = rho_e_val * j_squared
+        if bool(self.SourceTerms):
+            for SourceTerm in self.SourceTerms:
+                source_terms += SourceTerm(t,T)
+        return source_terms / c_val / self.rho_m
 
     def __MagneticFieldMagnitude(self):
         """This private method implements the Ampere's law and returns the toroidal magnetic field"""
