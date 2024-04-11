@@ -157,7 +157,7 @@ class ScientificSoftwareProblem:
         stop_integration.terminal = True  # Stop integration when condition is met
         t_span = (
             0,
-            50,
+            500,
         )  # define a large enough span of time to reach the pulse duration
         count = 0
         for j in self.current_densities_to_plot_A_per_m2:
