@@ -235,3 +235,4 @@ class ScientificSoftwareProblem:
 if __name__ == "__main__":
     ssp = ScientificSoftwareProblem()
     ssp.solve_ivp()
+    input("Press Enter to continue...")
