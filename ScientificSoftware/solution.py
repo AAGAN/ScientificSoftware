@@ -168,7 +168,10 @@ class ScientificSoftwareProblem:
                 [self.coil_temperature_initial_K],
                 events=stop_integration,
             )
-            self.PulseDuration[count] = sol.t_events[0][0]
+            if sol.t_events[0]:
+                self.PulseDuration[count] = sol.t_events[0][0]
+            else:
+                self.PulseDuration[count] = np.nan
             self.MagneticField[count] = self.__MagneticFieldMagnitude()
             count += 1
         if output:
@@ -242,6 +245,9 @@ class ScientificSoftwareProblem:
 
 
 if __name__ == "__main__":
+    def cool(t,T):
+        return -10000 * T
     ssp = ScientificSoftwareProblem()
+    ssp.addSourceTerms(cool)
     ssp.solve_ivp()
     input("Press Enter to continue...")
