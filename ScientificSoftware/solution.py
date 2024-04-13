@@ -105,7 +105,7 @@ class ScientificSoftwareProblem:
         source_terms = rho_e_val * j_squared
         if bool(self.SourceTerms):
             for SourceTerm in self.SourceTerms:
-                source_terms += SourceTerm(t,T)
+                source_terms += SourceTerm(t, T)
         return source_terms / c_val / self.rho_m
 
     def __MagneticFieldMagnitude(self):
@@ -245,7 +245,7 @@ class ScientificSoftwareProblem:
 
 
 if __name__ == "__main__":
-    def cool(t,T):
+    def cool(t, T):
         return -10000 * T
     ssp = ScientificSoftwareProblem()
     ssp.addSourceTerms(cool)
