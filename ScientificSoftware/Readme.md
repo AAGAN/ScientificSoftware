@@ -1,4 +1,4 @@
-# Solution to the Scientific Software Problem from CFS
+# Solution to the Scientific Software Problem
 
 To make sure the enviroment for running the ScientificSoftware package is clean, it is advisable to create a new virtual environment
 
